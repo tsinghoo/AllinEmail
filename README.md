@@ -19,15 +19,19 @@
 ## Current versions
 
 - ### MacOS
-  - **AllinEmail** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/AllinEmail-1.0.0.dmg)
+  - **AllinEmail-en** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/AllinEmail-1.0.0.dmg)
 
-<!--
 - ### Windows
-  - **AllinEmail** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/build)
+  - **AllinEmail-en** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/AllinEmail.1.0.0.zip)
+
 
 - ### Android
-  - **AllinEmail** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/build)
+  - coming soon
 
+- ### iOS
+  - need more time
+
+<!--
 -->
 
 ## Source code
