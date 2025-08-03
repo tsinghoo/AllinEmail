@@ -27,7 +27,7 @@
 
 - ### Android
   - **AllinEmail-en** - [`1.0.0`](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/AllinEmail.1.0.0.apk)
-  - [![scan to download apk](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/downloadApk.png){: style="width:150px;"}](https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/AllinEmail.1.0.0.apk)
+  <img src="https://github.com/tsinghoo/AllinEmail/releases/download/v1.0.0/downloadApk.png" alt="scan to download apk" style="width:150px;">
 
 
 - ### iOS
