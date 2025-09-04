@@ -1,0 +1,56 @@
+{
+  "name": "AllinEmail",
+  "displayName": "AllinEmail",
+  "version": "1.0.0",
+  "description": "secure chat/social through email",
+  "main": "appmain.js",
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js",
+    "webpacknode": "webpack --config webpack.config.node.js",
+    "obf": "node obf.js",
+    "package": "electron-packager ./ myapp  --platform=win32 --arch=x64 --out ./OutApp --app-version 1.7.9 --overwrite --icon=./www/mhgl/fe/vendor/bootstrap3-dialog-master/examples/images/pig.ico",
+    "pack": " electron-builder --dir ",
+    "dist": " electron-builder --win --x64",
+    "distmac": " electron-builder --mac --x64"
+  },
+  "build": {
+    "productName": "AllinEmail",
+    "appId": "com.labadida.AllinEmail",
+    "copyright": "Labadida Inc.",
+    "directories": {
+      "output": "build"
+    },
+    "mac": {
+      "category": "com.labadida.AllinEmail",
+      "target": "dmg",
+      "icon": "app/www/mhgl/fe/img/AllinEmail.icns"
+    },
+    "win": {
+      "icon": "app/www/mhgl/fe/img/AllinEmail.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "icon": "app/www/mhgl/fe/img/AllinEmail.png"
+    },
+    "npmRebuild": false
+  },
+  "author": "Labadida Inc.",
+  "license": "GPL v3",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-minimizer-webpack-plugin": "^7.0.2",
+    "electron": "18.3.15",
+    "electron-builder": "^23.6.0",
+    "electron-rebuild": "^3.2.9",
+    "html-minimizer-webpack-plugin": "^5.0.3",
+    "html-webpack-plugin": "^5.6.3",
+    "javascript-obfuscator": "^4.1.1",
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack": "^5.101.0",
+    "webpack-cli": "^6.0.1"
+  }
+}
