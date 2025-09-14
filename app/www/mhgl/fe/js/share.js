@@ -1449,12 +1449,6 @@ window.mhgl_share =
           });
         }
       },
-      getMemberName__: function (item) {
-        if (item == null) {
-          item = share.getCurrentClass__().myMember;
-        }
-        return item.childId;
-      },
       getDocument__: function () {
         var doc = document;
         if (share.isInFrame__()) {
@@ -1611,9 +1605,43 @@ window.mhgl_share =
 
         return lang;
       },
+      isInAllinEmail: function () {
+        function showWarning() {
+          $("body").append(`This page can only work in <a href="http://www.labadida.com/download/AllinEmail">AllinEmail</a> APP`);
+        }
+
+        if (share.isInFrame__()) {
+          let pp = parent.parent;
+          if (pp.mhgl_container == null) {
+            showWarning();
+            return false;
+          }
+        } else {
+          let pos = document.location.href.indexOf("container.htm");
+          if (pos < 0) {
+            pos = document.location.href.indexOf("start.htm");
+          }
+
+          if (pos < 0) {
+            showWarning();
+            return false;
+          }
+
+          if (window.electron) {
+            return true;
+          }
+
+        }
+
+        return true;
+      },
       initialize__: function () {
         window.$$ = function (selector) {
           return $(selector, parent.parent.document);
+        }
+
+        if (!share.isInAllinEmail()) {
+          return;
         }
 
         if (!share.isInFrame__()) {
@@ -1700,11 +1728,15 @@ window.mhgl_share =
         share.extendJquery__();
         share.hrefClicked__();
 
-        share.computePosition = window.FloatingUIDOM.computePosition;
-        share.flip = window.FloatingUIDOM.flip;
-        share.shift = window.FloatingUIDOM.shift;
-        share.offset = window.FloatingUIDOM.offset;
-        share.arrow = window.FloatingUIDOM.arrow;
+        try {
+          share.computePosition = window.FloatingUIDOM.computePosition;
+          share.flip = window.FloatingUIDOM.flip;
+          share.shift = window.FloatingUIDOM.shift;
+          share.offset = window.FloatingUIDOM.offset;
+          share.arrow = window.FloatingUIDOM.arrow;
+        } catch (e) {
+
+        }
       },
       hrefClicked__: function () {
         $(document).on('click', 'a', function (e) {
@@ -4722,8 +4754,8 @@ window.mhgl_share =
         if (href.lastIndexOf("file://", 0) === 0) {
           return true;
         }
-
-        if (href.lastIndexOf("http://local.labadida.com/", 0) === 0) {
+        let pos = href.indexOf("://local.labadida.com/", 0);
+        if (pos >= 4 && pos <= 5) {
           return true;
         }
 
@@ -5023,53 +5055,6 @@ window.mhgl_share =
           },
           succ
         );
-      },
-
-      getCurrentClass__: function (classId, success, fail, notHandleCodes) {
-        if (share.isInFrame__()) {
-          return parent.mhgl_share.getCurrentClass__(
-            classId,
-            success,
-            fail,
-            notHandleCodes
-          );
-        }
-
-        if (share.currentClass__ != null) {
-          if (success != null) {
-            success(share.currentClass__);
-          }
-
-          return share.currentClass__;
-        }
-
-        if (!share.useFrame__()) {
-          var c = share.getCache__("CurrentClass");
-          if (c != null) {
-            share.currentClass__ = JSON.parse(c);
-            if (success != null) {
-              success(share.currentClass__);
-            }
-
-            return share.currentClass__;
-          }
-        }
-
-        if (classId == null) {
-          return null;
-        }
-
-        share.getClass__(
-          classId,
-          function (clazz) {
-            share.setCurrentClass__(clazz);
-            success && success(clazz);
-          },
-          fail,
-          notHandleCodes
-        );
-
-        return false;
       },
 
       getClass__: function (classId, success, fail, notHandleCodes) {
@@ -7064,9 +7049,9 @@ window.mhgl_share =
     };
 
     $(function () {
-      try{
+      try {
         share.initialize__();
-      }catch(e){
+      } catch (e) {
         share.debug__(e);
       }
     });

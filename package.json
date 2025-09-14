@@ -23,10 +23,10 @@
     "mac": {
       "category": "com.labadida.AllinEmail",
       "target": "dmg",
-      "icon": "app/www/mhgl/fe/img/AllinEmail.icns"
+      "icon": "src/www/mhgl/fe/img/AllinEmail.icns"
     },
     "win": {
-      "icon": "app/www/mhgl/fe/img/AllinEmail.ico",
+      "icon": "src/www/mhgl/fe/img/AllinEmail.ico",
       "target": "nsis"
     },
     "nsis": {
@@ -34,12 +34,13 @@
       "allowToChangeInstallationDirectory": true
     },
     "linux": {
-      "icon": "app/www/mhgl/fe/img/AllinEmail.png"
+      "icon": "src/www/mhgl/fe/img/AllinEmail.png"
     },
     "npmRebuild": false
   },
   "author": "Labadida Inc.",
   "license": "GPL v3",
+  "dependencies": {},
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
     "css-minimizer-webpack-plugin": "^7.0.2",
